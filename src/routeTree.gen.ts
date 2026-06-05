@@ -9,38 +9,167 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesMustardworksRouteImport } from './routes/services.mustardworks'
+import { Route as ServicesMustardstudioRouteImport } from './routes/services.mustardstudio'
+import { Route as ServicesMustardlearnRouteImport } from './routes/services.mustardlearn'
+import { Route as ServicesMustardcareRouteImport } from './routes/services.mustardcare'
 
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesMustardworksRoute = ServicesMustardworksRouteImport.update({
+  id: '/services/mustardworks',
+  path: '/services/mustardworks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesMustardstudioRoute = ServicesMustardstudioRouteImport.update({
+  id: '/services/mustardstudio',
+  path: '/services/mustardstudio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesMustardlearnRoute = ServicesMustardlearnRouteImport.update({
+  id: '/services/mustardlearn',
+  path: '/services/mustardlearn',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesMustardcareRoute = ServicesMustardcareRouteImport.update({
+  id: '/services/mustardcare',
+  path: '/services/mustardcare',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/projects': typeof ProjectsRoute
+  '/services/mustardcare': typeof ServicesMustardcareRoute
+  '/services/mustardlearn': typeof ServicesMustardlearnRoute
+  '/services/mustardstudio': typeof ServicesMustardstudioRoute
+  '/services/mustardworks': typeof ServicesMustardworksRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/projects': typeof ProjectsRoute
+  '/services/mustardcare': typeof ServicesMustardcareRoute
+  '/services/mustardlearn': typeof ServicesMustardlearnRoute
+  '/services/mustardstudio': typeof ServicesMustardstudioRoute
+  '/services/mustardworks': typeof ServicesMustardworksRoute
+  '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/contact': typeof ContactRoute
+  '/projects': typeof ProjectsRoute
+  '/services/mustardcare': typeof ServicesMustardcareRoute
+  '/services/mustardlearn': typeof ServicesMustardlearnRoute
+  '/services/mustardstudio': typeof ServicesMustardstudioRoute
+  '/services/mustardworks': typeof ServicesMustardworksRoute
+  '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/projects'
+    | '/services/mustardcare'
+    | '/services/mustardlearn'
+    | '/services/mustardstudio'
+    | '/services/mustardworks'
+    | '/services/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/projects'
+    | '/services/mustardcare'
+    | '/services/mustardlearn'
+    | '/services/mustardstudio'
+    | '/services/mustardworks'
+    | '/services'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/projects'
+    | '/services/mustardcare'
+    | '/services/mustardlearn'
+    | '/services/mustardstudio'
+    | '/services/mustardworks'
+    | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ContactRoute: typeof ContactRoute
+  ProjectsRoute: typeof ProjectsRoute
+  ServicesMustardcareRoute: typeof ServicesMustardcareRoute
+  ServicesMustardlearnRoute: typeof ServicesMustardlearnRoute
+  ServicesMustardstudioRoute: typeof ServicesMustardstudioRoute
+  ServicesMustardworksRoute: typeof ServicesMustardworksRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +177,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/mustardworks': {
+      id: '/services/mustardworks'
+      path: '/services/mustardworks'
+      fullPath: '/services/mustardworks'
+      preLoaderRoute: typeof ServicesMustardworksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/mustardstudio': {
+      id: '/services/mustardstudio'
+      path: '/services/mustardstudio'
+      fullPath: '/services/mustardstudio'
+      preLoaderRoute: typeof ServicesMustardstudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/mustardlearn': {
+      id: '/services/mustardlearn'
+      path: '/services/mustardlearn'
+      fullPath: '/services/mustardlearn'
+      preLoaderRoute: typeof ServicesMustardlearnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/mustardcare': {
+      id: '/services/mustardcare'
+      path: '/services/mustardcare'
+      fullPath: '/services/mustardcare'
+      preLoaderRoute: typeof ServicesMustardcareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ContactRoute: ContactRoute,
+  ProjectsRoute: ProjectsRoute,
+  ServicesMustardcareRoute: ServicesMustardcareRoute,
+  ServicesMustardlearnRoute: ServicesMustardlearnRoute,
+  ServicesMustardstudioRoute: ServicesMustardstudioRoute,
+  ServicesMustardworksRoute: ServicesMustardworksRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
