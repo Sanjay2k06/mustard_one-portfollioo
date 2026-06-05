@@ -77,14 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "MustardOne — One Way for Many Solutions" },
+      { name: "description", content: "Engineering, creativity, technical support, and education under one identity." },
+      { name: "author", content: "MustardOne" },
+      { property: "og:title", content: "MustardOne — One Way for Many Solutions" },
+      { property: "og:description", content: "An ecosystem of four divisions: Works, Studio, Care, and Learn." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
