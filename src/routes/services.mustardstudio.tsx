@@ -13,21 +13,18 @@ export const Route = createFileRoute("/services/mustardstudio")({
   component: () => (
     <DivisionPage
       eyebrow="MustardStudio"
+      logo="/video_images/mustard_arts.png"
+      theme="studio"
       title={<>Where creativity <span className="text-gradient-mustard">comes alive.</span></>}
       subtitle="Hand-crafted art, identity design, and moving images — built with patience and personality."
       galleryAccent="from-pink-500/20"
       services={[
-        { title: "Pencil Portraits", desc: "Detailed graphite portraits from your reference photo." },
-        { title: "Color Portraits", desc: "Color pencil and pastel portraits, vibrant and warm." },
-        { title: "Watercolor Paintings", desc: "Original watercolor work, landscapes and portraits." },
-        { title: "Thread Portraits", desc: "Embroidered thread art with depth and texture." },
-        { title: "Custom Artworks", desc: "Commissioned pieces tailored to your story." },
-        { title: "Logo Design", desc: "Distinctive marks crafted around your brand idea." },
-        { title: "Brand Identity", desc: "Full systems — color, type, voice, and guidelines." },
-        { title: "Posters & Banners", desc: "Print-ready layouts for campaigns and events." },
-        { title: "Video Editing", desc: "Polished cuts for social, brand, and personal videos." },
-        { title: "Motion Graphics", desc: "Animated explainers, intros, and brand motion." },
-        { title: "Short Film Production", desc: "End-to-end short film and creative film work." },
+        { title: "Pencil Sketch", desc: "Realistic hand drawn portraits crafted with precision, detail, and artistic excellence." },
+        { title: "Water Painting", desc: "Vibrant watercolor artworks that transform memories and ideas into timeless creations." },
+        { title: "Thread Portrait", desc: "Unique handcrafted portraits created using threads for a distinctive artistic appearance." },
+        { title: "Brand Design Suite", desc: "Logo design, poster design, social media creatives, business branding, and complete visual identity solutions." },
+        { title: "Short Film Production", desc: "End-to-end production services including concept development, filming, direction, and storytelling." },
+        { title: "Video Editing", desc: "Professional editing for reels, advertisements, promotional videos, YouTube content, and cinematic projects." },
       ]}
       benefits={[
         "Real craftsmanship, not template work",

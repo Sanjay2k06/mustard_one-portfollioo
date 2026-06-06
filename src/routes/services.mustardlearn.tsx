@@ -13,6 +13,9 @@ export const Route = createFileRoute("/services/mustardlearn")({
   component: () => (
     <DivisionPage
       eyebrow="MustardLearn"
+      logo="/video_images/mustard_learn.png"
+      hideGallery={true}
+      theme="learn"
       title={<>Learn beyond the <span className="text-gradient-mustard">classroom.</span></>}
       subtitle="Hands-on workshops, practical curriculum, and career guidance built by people who actually ship work."
       galleryAccent="from-amber-500/20"

@@ -1,8 +1,9 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
+import { CreativeShowcase } from "@/components/CreativeShowcase";
 
 export interface DivisionPageProps {
   eyebrow: string;
@@ -13,14 +14,134 @@ export interface DivisionPageProps {
   benefits?: string[];
   galleryAccent?: string;
   faqs?: { q: string; a: string }[];
+  logo?: string;
+  hideGallery?: boolean;
+  theme?: "studio" | "care" | "learn" | "work";
 }
 
 export function DivisionPage({
-  eyebrow, title, subtitle, services, process, benefits, galleryAccent = "from-amber-500/20", faqs,
+  eyebrow, title, subtitle, services, process, benefits, galleryAccent = "from-amber-500/20", faqs, logo, hideGallery = false, theme,
 }: DivisionPageProps) {
+  const [activeShowcaseId, setActiveShowcaseId] = useState("pencil");
+
+  const mapServiceTitleToId = (title: string): string => {
+    switch (title.toLowerCase()) {
+      case "pencil sketch": return "pencil";
+      case "water painting": return "water";
+      case "thread portrait": return "thread";
+      case "brand design suite": return "brand";
+      case "short film production": return "film";
+      case "video editing": return "edit";
+      default: return "pencil";
+    }
+  };
+
+  const handleGoToPortfolio = (title: string) => {
+    const id = mapServiceTitleToId(title);
+    setActiveShowcaseId(id);
+    const el = document.getElementById("beauty-done-by-us");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const getThemeStyles = () => {
+    switch (theme) {
+      case "studio":
+        return {
+          "--background": "#0A0516",
+          "--foreground": "#FFFFFF",
+          "--card": "#130B29",
+          "--card-foreground": "#FFFFFF",
+          "--primary": "#6D3EF5",
+          "--primary-foreground": "#FFFFFF",
+          "--secondary": "#7C4DFF",
+          "--secondary-foreground": "#FFFFFF",
+          "--muted": "#5B21B6",
+          "--muted-foreground": "#A78BFA",
+          "--border": "#1F123F",
+          "--ring": "#6D3EF5",
+          "--gradient-mustard": "linear-gradient(135deg, #6D3EF5, #7C4DFF)",
+          "--gradient-card": "linear-gradient(180deg, #130B29, #0A0516)",
+          "--glass-bg": "rgba(19, 11, 41, 0.8)",
+          "--glass-border": "rgba(124, 77, 255, 0.35)",
+          color: "#FFFFFF",
+          backgroundColor: "#0A0516",
+        } as React.CSSProperties;
+      case "care":
+        return {
+          "--background": "#0A1128",
+          "--foreground": "#FFFFFF",
+          "--card": "#101F42",
+          "--card-foreground": "#FFFFFF",
+          "--primary": "#1565FF",
+          "--primary-foreground": "#FFFFFF",
+          "--secondary": "#0D6EFD",
+          "--secondary-foreground": "#FFFFFF",
+          "--muted": "#0047CC",
+          "--muted-foreground": "#93C5FD",
+          "--border": "#1E3A8A",
+          "--ring": "#1565FF",
+          "--gradient-mustard": "linear-gradient(135deg, #1565FF, #0D6EFD)",
+          "--gradient-card": "linear-gradient(180deg, #101F42, #0A1128)",
+          "--glass-bg": "rgba(16, 31, 66, 0.8)",
+          "--glass-border": "rgba(21, 101, 255, 0.35)",
+          color: "#FFFFFF",
+          backgroundColor: "#0A1128",
+        } as React.CSSProperties;
+      case "learn":
+        return {
+          "--background": "#FFFFFF",
+          "--foreground": "#1B5E20",
+          "--card": "#F1F8F1",
+          "--card-foreground": "#1B5E20",
+          "--primary": "#4A9C3A",
+          "--primary-foreground": "#FFFFFF",
+          "--secondary": "#5BAE48",
+          "--secondary-foreground": "#FFFFFF",
+          "--muted": "#E2EFE2",
+          "--muted-foreground": "#2E7D32",
+          "--border": "#C8E6C9",
+          "--ring": "#4A9C3A",
+          "--gradient-mustard": "linear-gradient(135deg, #4A9C3A, #2E7D32)",
+          "--gradient-card": "linear-gradient(180deg, #F1F8F1, #E8F5E9)",
+          "--glass-bg": "rgba(241, 248, 241, 0.8)",
+          "--glass-border": "rgba(74, 156, 58, 0.35)",
+          color: "#1B5E20",
+          backgroundColor: "#FFFFFF",
+        } as React.CSSProperties;
+      case "work":
+        return {
+          "--background": "#FFFFFF",
+          "--foreground": "#1C1917",
+          "--card": "#F9F6F0",
+          "--card-foreground": "#1C1917",
+          "--primary": "#D4AF37",
+          "--primary-foreground": "#1C1917",
+          "--secondary": "#C4A12D",
+          "--secondary-foreground": "#FFFFFF",
+          "--muted": "#F0EAD6",
+          "--muted-foreground": "#8A6B08",
+          "--border": "#E5DCC6",
+          "--ring": "#D4AF37",
+          "--gradient-mustard": "linear-gradient(135deg, #D4AF37, #B8860B)",
+          "--gradient-card": "linear-gradient(180deg, #F9F6F0, #F3ECE0)",
+          "--glass-bg": "rgba(249, 246, 240, 0.8)",
+          "--glass-border": "rgba(212, 175, 55, 0.35)",
+          color: "#1C1917",
+          backgroundColor: "#FFFFFF",
+        } as React.CSSProperties;
+      default:
+        return {} as React.CSSProperties;
+    }
+  };
+
+  const themeStyles = getThemeStyles();
+
   return (
-    <PageShell>
-      <PageHero eyebrow={eyebrow} title={title} subtitle={subtitle} />
+    <PageShell themeStyles={themeStyles}>
+      <div className="font-sans select-none">
+        <PageHero eyebrow={eyebrow} title={title} subtitle={subtitle} logo={logo} noEyebrowBox={true} />
 
       <section className="mx-auto max-w-7xl px-6 py-16">
         <Reveal>
@@ -30,11 +151,21 @@ export function DivisionPage({
           {services.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.04}>
               <div
-                className="h-full rounded-2xl border border-border/60 p-6 transition-all hover:-translate-y-1 hover:border-primary/40"
+                className="h-full rounded-2xl border border-border/60 p-6 flex flex-col justify-between transition-all hover:-translate-y-1 hover:border-primary/40"
                 style={{ background: "var(--gradient-card)" }}
               >
-                <h3 className="text-lg font-bold">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+                <div>
+                  <h3 className="text-lg font-bold">{s.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+                </div>
+                {theme === "studio" && (
+                  <Link
+                    to="/contact"
+                    className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#A78BFA] hover:text-[#7C4DFF] transition-all cursor-pointer w-fit"
+                  >
+                    Book Now <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                )}
               </div>
             </Reveal>
           ))}
@@ -78,20 +209,29 @@ export function DivisionPage({
         </section>
       )}
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
-        <Reveal>
-          <h2 className="text-3xl sm:text-4xl font-bold">Gallery</h2>
-        </Reveal>
-        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <Reveal key={i} delay={i * 0.03}>
-              <div
-                className={`aspect-square overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-br ${galleryAccent} via-card to-background transition-transform hover:scale-[1.02]`}
-              />
+      {theme === "studio" ? (
+        <CreativeShowcase
+          activeProjectId={activeShowcaseId}
+          onChangeActiveProject={setActiveShowcaseId}
+        />
+      ) : (
+        !hideGallery && (
+          <section className="mx-auto max-w-7xl px-6 py-16">
+            <Reveal>
+              <h2 className="text-3xl sm:text-4xl font-bold">Gallery</h2>
             </Reveal>
-          ))}
-        </div>
-      </section>
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <Reveal key={i} delay={i * 0.03}>
+                  <div
+                    className={`aspect-square overflow-hidden rounded-2xl border border-border/60 bg-gradient-to-br ${galleryAccent} via-card to-background transition-transform hover:scale-[1.02]`}
+                  />
+                </Reveal>
+              ))}
+            </div>
+          </section>
+        )
+      )}
 
       {faqs && (
         <section className="mx-auto max-w-4xl px-6 py-16">
@@ -133,6 +273,7 @@ export function DivisionPage({
           </div>
         </Reveal>
       </section>
+      </div>
     </PageShell>
   );
 }

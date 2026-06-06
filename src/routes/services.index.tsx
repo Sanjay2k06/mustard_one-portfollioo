@@ -16,11 +16,11 @@ export const Route = createFileRoute("/services/")({
 });
 
 const divs = [
-  { slug: "mustardworks", name: "MustardWorks", tag: "Engineering & Innovation", icon: Cpu, desc: "Prototypes, embedded, IoT, VLSI, AI/ML, EV technologies, and final-year projects." },
+  { slug: "mustardworks", name: "MustardWork", tag: "Engineering & Innovation", icon: Cpu, desc: "Prototypes, embedded, IoT, VLSI, AI/ML, EV technologies, and final-year projects." },
   { slug: "mustardstudio", name: "MustardStudio", tag: "Creative & Media", icon: Palette, desc: "Portraits, paintings, brand identity, video, motion, and short film production." },
   { slug: "mustardcare", name: "MustardCare", tag: "Technical Support", icon: Wrench, desc: "Custom PC builds, upgrades, laptop service, performance tuning, and maintenance." },
   { slug: "mustardlearn", name: "MustardLearn", tag: "Education & Skills", icon: GraduationCap, desc: "Workshops, certification programs, career guidance, and creative classes." },
-];
+] as const;
 
 function ServicesIndex() {
   return (

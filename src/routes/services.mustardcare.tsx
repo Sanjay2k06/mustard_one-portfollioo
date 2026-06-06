@@ -13,6 +13,9 @@ export const Route = createFileRoute("/services/mustardcare")({
   component: () => (
     <DivisionPage
       eyebrow="MustardCare"
+      logo="/video_images/mustard_care.png"
+      theme="care"
+      hideGallery={true}
       title={<>Optimizing technology for <span className="text-gradient-mustard">better performance.</span></>}
       subtitle="From a faster laptop to a fully custom workstation — we tune the hardware around how you actually work."
       galleryAccent="from-blue-500/20"

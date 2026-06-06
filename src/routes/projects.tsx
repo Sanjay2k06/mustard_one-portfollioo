@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
 import { PageShell, PageHero } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
 
@@ -15,60 +14,81 @@ export const Route = createFileRoute("/projects")({
   component: Projects,
 });
 
-const categories = ["All", "Engineering", "Creative", "Technical", "Education"] as const;
-
 const projects = [
-  { title: "IoT Smart Greenhouse", cat: "Engineering", color: "from-emerald-500/30", desc: "Sensor mesh, cloud dashboard, automated irrigation." },
-  { title: "EV Battery Monitor", cat: "Engineering", color: "from-teal-500/30", desc: "Cell-level telemetry with safety thresholds." },
-  { title: "VLSI Verification Kit", cat: "Engineering", color: "from-cyan-500/30", desc: "Plug-and-play SystemVerilog testbench templates." },
-  { title: "Brand Identity — Lumen", cat: "Creative", color: "from-pink-500/30", desc: "Logo, type system, motion package." },
-  { title: "Short Film: Threads", cat: "Creative", color: "from-purple-500/30", desc: "10-minute short, end-to-end production." },
-  { title: "Watercolor Series", cat: "Creative", color: "from-rose-500/30", desc: "Commissioned set of 12 original paintings." },
-  { title: "Custom Workstation Build", cat: "Technical", color: "from-blue-500/30", desc: "Silent, high-throughput build for a video studio." },
-  { title: "Studio Laptop Fleet Service", cat: "Technical", color: "from-indigo-500/30", desc: "Service contract for 30 creator devices." },
-  { title: "Embedded Bootcamp Cohort #4", cat: "Education", color: "from-amber-500/30", desc: "8-week practical track with shipped projects." },
-  { title: "Sketching for Beginners", cat: "Education", color: "from-yellow-500/30", desc: "Recurring weekend workshop series." },
+  { 
+    title: "Smart Walking Stick for the Visually Impaired", 
+    cat: "Engineering", 
+    color: "from-amber-600/20", 
+    image: "/video_images/blindstick.jpeg",
+    desc: "An AI-powered assistive device with obstacle detection, GPS tracking, and emergency alerts. Designed to enhance safety and independence for visually impaired individuals." 
+  },
+  { 
+    title: "Predictive Load Management System", 
+    cat: "Engineering", 
+    color: "from-blue-600/20", 
+    image: "/video_images/loadmanagement.jpeg",
+    desc: "A smart energy management solution that monitors, predicts, and optimizes electrical load consumption in real time. Designed to improve energy efficiency and support next-generation smart grid applications." 
+  },
+  { 
+    title: "Smart Water Monitoring & Control System", 
+    cat: "Engineering", 
+    color: "from-emerald-600/20", 
+    image: "/video_images/automatedpump.jpeg",
+    desc: "An IoT-based solution that enables remote water flow control and real-time monitoring of flow and pressure parameters through the Blynk app. Designed for efficient water management and smart automation." 
+  },
+  { 
+    title: "Smart pH Monitoring System", 
+    cat: "Engineering", 
+    color: "from-teal-600/20", 
+    image: "/video_images/ph.jpeg",
+    desc: "An automated water quality monitoring system that tracks pH levels and sends SMS alerts for filter replacement and maintenance. Designed to ensure safe water quality through real-time monitoring." 
+  },
+  { 
+    title: "AI-Based Rainwater Chemistry Analysis System", 
+    cat: "Engineering", 
+    color: "from-purple-600/20", 
+    image: "/video_images/chemical.jpeg",
+    desc: "A smart environmental monitoring solution that analyzes rainwater quality using sensors and AI techniques. Developed to provide real-time insights for pollution monitoring and sustainable water management." 
+  },
+  { 
+    title: "Smart Anxiety Management System", 
+    cat: "Technical", 
+    color: "from-pink-600/20", 
+    image: "/video_images/stress.jpeg",
+    desc: "A wearable system that monitors heart rate, SpO₂, and body temperature to detect anxiety levels in real time. Based on the detected condition, vibration motors at three nerve points provide calming haptic feedback to help regulate and reduce anxiety." 
+  },
 ];
 
 function Projects() {
-  const [filter, setFilter] = useState<(typeof categories)[number]>("All");
-  const visible = filter === "All" ? projects : projects.filter((p) => p.cat === filter);
-
   return (
     <PageShell>
       <PageHero
         eyebrow="Projects"
         title={<>Selected <span className="text-gradient-mustard">work.</span></>}
         subtitle="A small window into what we've shipped across engineering, creative, technical, and education."
+        noEyebrowBox={true}
       />
 
-      <section className="mx-auto max-w-7xl px-6">
-        <div className="flex flex-wrap justify-center gap-2">
-          {categories.map((c) => (
-            <button
-              key={c}
-              onClick={() => setFilter(c)}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition-all ${
-                filter === c
-                  ? "bg-primary text-primary-foreground glow-mustard"
-                  : "glass text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {visible.map((p, i) => (
+      <section className="mx-auto max-w-7xl px-6 py-6">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {projects.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.04}>
               <article className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-border/60">
-                <div className={`absolute inset-0 bg-gradient-to-br ${p.color} via-card to-background transition-transform duration-700 group-hover:scale-110`} />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-6">
-                  <p className="text-xs uppercase tracking-[0.2em] text-primary">{p.cat}</p>
-                  <h3 className="mt-2 text-xl font-bold">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
+                {p.image ? (
+                  <img 
+                    src={p.image} 
+                    alt={p.title} 
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 select-none"
+                  />
+                ) : (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${p.color} via-card to-background transition-transform duration-700 group-hover:scale-110`} />
+                )}
+                {/* Gradient overlay for readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent z-10" />
+                <div className="absolute inset-x-0 bottom-0 p-6 z-20">
+                  <p className="text-xs uppercase tracking-[0.2em] text-primary font-semibold">{p.cat}</p>
+                  <h3 className="mt-2 text-2xl font-bold tracking-tight font-display">{p.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
                 </div>
               </article>
             </Reveal>

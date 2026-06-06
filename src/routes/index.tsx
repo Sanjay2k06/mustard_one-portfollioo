@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, Cpu, Palette, Wrench, GraduationCap, Sparkles } from "lucide-react";
-import { SplashScreen } from "@/components/SplashScreen";
 import { PageShell } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
+import SplitText from "@/components/SplitText";
+import ScrollVelocity from "@/components/ScrollVelocity";
+import Magnet from "@/components/Magnet";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,10 +22,11 @@ export const Route = createFileRoute("/")({
 const divisions = [
   {
     slug: "mustardworks",
-    name: "MustardWorks",
+    name: "MustardWork",
     tag: "Engineering & Innovation",
     desc: "Transforming ideas into practical engineering solutions.",
     icon: Cpu,
+    logo: "/video_images/mustard_work.png",
     items: ["Embedded Systems", "IoT Projects", "VLSI Concepts", "Generative AI", "Machine Learning", "EV Technology", "Engineering Prototypes", "Final Year Projects"],
   },
   {
@@ -33,6 +35,7 @@ const divisions = [
     tag: "Creative & Media",
     desc: "Where imagination meets craftsmanship.",
     icon: Palette,
+    logo: "/video_images/mustard_arts.png",
     items: ["Portrait Sketches", "Watercolor Paintings", "Logo Design", "Brand Identity", "Video Editing", "Motion Graphics", "Short Film Production"],
   },
   {
@@ -41,6 +44,7 @@ const divisions = [
     tag: "Technical Support",
     desc: "Helping users maximize device performance and reliability.",
     icon: Wrench,
+    logo: "/video_images/mustard_care.png",
     items: ["PC Building", "RAM Upgrade", "SSD Upgrade", "Laptop Service", "Performance Optimization", "Storage Expansion", "System Maintenance"],
   },
   {
@@ -49,6 +53,7 @@ const divisions = [
     tag: "Education & Skills",
     desc: "Practical learning beyond classrooms.",
     icon: GraduationCap,
+    logo: "/video_images/mustard_learn.png",
     items: ["Embedded & IoT Workshops", "VLSI Workshops", "EV Workshops", "Sketching & Painting", "Origami Workshops", "Career Guidance"],
   },
 ] as const;
@@ -57,33 +62,29 @@ const journey = [
   { word: "Learn", desc: "Hands-on workshops & curated curriculum that build real skills." },
   { word: "Create", desc: "Bring ideas to life with design, media, and craftsmanship." },
   { word: "Innovate", desc: "Engineer prototypes, products, and intelligent systems." },
-  { word: "Grow", desc: "Scale your skills, your projects, and your future." },
 ];
 
 function Index() {
-  const [showSplash, setShowSplash] = useState(true);
-
-  useEffect(() => {
-    if (sessionStorage.getItem("m1-splash-seen") === "1") setShowSplash(false);
-  }, []);
-
-  const dismiss = () => {
-    sessionStorage.setItem("m1-splash-seen", "1");
-    setShowSplash(false);
-  };
-
   return (
-    <>
-      <AnimatePresence>{showSplash && <SplashScreen onEnter={dismiss} />}</AnimatePresence>
-      <PageShell>
-        <Hero />
-        <AboutPreview />
-        <DivisionsSection />
-        <WhyChoose />
-        <ProjectsShowcase />
-        <CTA />
-      </PageShell>
-    </>
+    <PageShell>
+      <Hero />
+      <div className="py-12 my-8 bg-card border-y border-border/60 overflow-hidden">
+        <ScrollVelocity
+          texts={[
+            "MustardLearn • MustardStudio • MustardCare • MustardWork",
+            "Engineering • Creativity • Technology • Learning"
+          ]}
+          velocity={15}
+          className="text-4xl sm:text-6xl font-extrabold tracking-widest text-primary/70"
+        />
+      </div>
+      <AboutPreview />
+      <DivisionsSection />
+      <WhyChoose />
+      <ProjectsShowcase />
+      <CollaborationPartner />
+      <CTA />
+    </PageShell>
   );
 }
 
@@ -94,25 +95,25 @@ function Hero() {
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div
           className="absolute -top-20 left-1/4 h-[500px] w-[500px] rounded-full blur-3xl opacity-40 animate-float-blob"
-          style={{ background: "radial-gradient(circle, oklch(0.82 0.17 88 / 0.5), transparent 70%)" }}
+          style={{ background: "radial-gradient(circle, rgba(226,213,188,0.45), transparent 70%)" }}
         />
         <div
           className="absolute top-40 right-0 h-[400px] w-[400px] rounded-full blur-3xl opacity-30 animate-float-blob"
-          style={{ background: "radial-gradient(circle, oklch(0.88 0.16 92 / 0.5), transparent 70%)", animationDelay: "-6s" }}
+          style={{ background: "radial-gradient(circle, rgba(233,223,201,0.35), transparent 70%)", animationDelay: "-6s" }}
         />
       </div>
 
       <div className="text-center">
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-muted-foreground"
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-xs uppercase tracking-[0.3em] text-[#1C1917]/70 font-bold mb-5"
         >
-          <Sparkles className="h-3 w-3 text-primary" /> As Your Expectations
+          As Your Expectations
         </motion.div>
 
-        <h1 className="mt-8 text-6xl sm:text-8xl lg:text-9xl font-bold tracking-tight">
+        <h1 className="mt-8 text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tight">
           {"MUSTARDONE".split("").map((ch, i) => (
             <motion.span
               key={i}
@@ -127,16 +128,26 @@ function Hero() {
         </h1>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 font-display text-2xl sm:text-3xl text-muted-foreground"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-3 text-sm font-bold uppercase tracking-[0.25em] text-[#1C1917]/50"
         >
-          <span>Engineering.</span>
-          <span>Creativity.</span>
-          <span>Technology.</span>
-          <span className="text-foreground">Learning.</span>
+          Since 2025
         </motion.div>
+
+        <div className="mt-8 flex justify-center">
+          <SplitText
+            text="Engineering. Creativity. Technology. Learning."
+            className="font-display text-2xl sm:text-3xl text-muted-foreground"
+            delay={60}
+            duration={0.8}
+            ease="power3.out"
+            splitType="words"
+            from={{ opacity: 0, y: 20 }}
+            to={{ opacity: 1, y: 0 }}
+          />
+        </div>
 
         <motion.p
           initial={{ opacity: 0, y: 10 }}
@@ -152,20 +163,24 @@ function Hero() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.15, duration: 0.6 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+          className="mt-10 flex flex-wrap items-center justify-center gap-6"
         >
-          <Link
-            to="/services/mustardworks"
-            className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105 glow-mustard"
-          >
-            Explore Services <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Link>
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 rounded-full glass px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-secondary"
-          >
-            View Projects
-          </Link>
+          <Magnet padding={40} magnetStrength={3}>
+            <Link
+              to="/services/mustardworks"
+              className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105 glow-mustard"
+            >
+              Explore Services <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Magnet>
+          <Magnet padding={40} magnetStrength={3}>
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 rounded-full glass px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-secondary"
+            >
+              View Projects
+            </Link>
+          </Magnet>
         </motion.div>
       </div>
     </section>
@@ -191,12 +206,14 @@ function AboutPreview() {
         </p>
       </Reveal>
       <Reveal delay={0.3}>
-        <Link
-          to="/about"
-          className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline underline-offset-4"
-        >
-          Read more about us <ArrowRight className="h-4 w-4" />
-        </Link>
+        <Magnet padding={35} magnetStrength={3}>
+          <Link
+            to="/about"
+            className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline underline-offset-4"
+          >
+            Read more about us <ArrowRight className="h-4 w-4" />
+          </Link>
+        </Magnet>
       </Reveal>
     </section>
   );
@@ -229,7 +246,7 @@ function DivisionsSection() {
 }
 
 function DivisionCard({
-  slug, name, tag, desc, icon: Icon, items,
+  slug, name, tag, desc, logo, items,
 }: (typeof divisions)[number]) {
   return (
     <Link
@@ -243,8 +260,8 @@ function DivisionCard({
       />
       <div className="relative">
         <div className="flex items-center justify-between">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110 group-hover:rotate-6">
-            <Icon className="h-6 w-6" />
+          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-card border border-border/80 overflow-hidden transition-transform group-hover:scale-110">
+            <img src={logo} alt={name} className="h-9 w-9 object-contain select-none" />
           </div>
           <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{tag}</p>
         </div>
@@ -276,7 +293,7 @@ function WhyChoose() {
       </Reveal>
       <div className="relative mt-16">
         <div className="absolute left-1/2 top-0 hidden h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-primary/40 to-transparent md:block" />
-        <div className="grid gap-8 md:grid-cols-4">
+        <div className="grid gap-8 md:grid-cols-3">
           {journey.map((j, i) => (
             <Reveal key={j.word} delay={i * 0.1}>
               <div className="relative rounded-2xl glass p-6">
@@ -293,12 +310,27 @@ function WhyChoose() {
 }
 
 const featuredProjects = [
-  { title: "IoT Smart Greenhouse", cat: "Engineering", color: "from-emerald-500/30" },
-  { title: "Brand Identity — Lumen", cat: "Creative", color: "from-pink-500/30" },
-  { title: "Custom Workstation Build", cat: "Technical", color: "from-blue-500/30" },
-  { title: "Embedded Systems Bootcamp", cat: "Education", color: "from-amber-500/30" },
-  { title: "EV Battery Monitor", cat: "Engineering", color: "from-teal-500/30" },
-  { title: "Short Film: Threads", cat: "Creative", color: "from-purple-500/30" },
+  {
+    title: "Smart Walking Stick for the Visually Impaired",
+    cat: "Engineering",
+    color: "from-amber-600/20",
+    image: "/video_images/blindstick.jpeg",
+    desc: "An AI-powered assistive device with obstacle detection, GPS tracking, and emergency alerts. Designed to enhance safety and independence for visually impaired individuals."
+  },
+  {
+    title: "Predictive Load Management System",
+    cat: "Engineering",
+    color: "from-blue-600/20",
+    image: "/video_images/loadmanagement.jpeg",
+    desc: "A smart energy management solution that monitors, predicts, and optimizes electrical load consumption in real time. Designed to improve energy efficiency and support next-generation smart grid applications."
+  },
+  {
+    title: "Smart Water Monitoring & Control System",
+    cat: "Engineering",
+    color: "from-emerald-600/20",
+    image: "/video_images/automatedpump.jpeg",
+    desc: "An IoT-based solution that enables remote water flow control and real-time monitoring of flow and pressure parameters through the Blynk app. Designed for efficient water management and smart automation."
+  },
 ];
 
 function ProjectsShowcase() {
@@ -319,12 +351,22 @@ function ProjectsShowcase() {
         {featuredProjects.map((p, i) => (
           <Reveal key={p.title} delay={i * 0.05}>
             <article className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-border/60">
-              <div className={`absolute inset-0 bg-gradient-to-br ${p.color} via-card to-background transition-transform duration-700 group-hover:scale-110`} />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-6">
-                <p className="text-xs uppercase tracking-[0.2em] text-primary">{p.cat}</p>
-                <h3 className="mt-2 text-xl font-bold">{p.title}</h3>
-                <div className="mt-4 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors group-hover:text-foreground">
+              {p.image ? (
+                <img 
+                  src={p.image} 
+                  alt={p.title} 
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110 select-none"
+                />
+              ) : (
+                <div className={`absolute inset-0 bg-gradient-to-br ${p.color} via-card to-background transition-transform duration-700 group-hover:scale-110`} />
+              )}
+              {/* Gradient overlay for readability */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/40 to-transparent z-10" />
+              <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col justify-end h-full z-20">
+                <p className="text-xs uppercase tracking-[0.2em] text-primary font-medium">{p.cat}</p>
+                <h3 className="mt-2 text-2xl font-bold tracking-tight font-display">{p.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground line-clamp-3 leading-relaxed">{p.desc}</p>
+                <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary/80 transition-colors group-hover:text-primary">
                   View Project <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </div>
@@ -342,11 +384,11 @@ function CTA() {
       <Reveal>
         <div
           className="relative overflow-hidden rounded-3xl border border-primary/30 p-12 sm:p-16 text-center"
-          style={{ background: "linear-gradient(135deg, oklch(0.18 0.02 95), oklch(0.13 0.005 95))" }}
+          style={{ background: "linear-gradient(135deg, #F1E8D7, #E9DFC9)" }}
         >
           <div
             className="pointer-events-none absolute inset-0 opacity-60"
-            style={{ background: "radial-gradient(ellipse at top, oklch(0.82 0.17 88 / 0.25), transparent 60%)" }}
+            style={{ background: "radial-gradient(ellipse at top, rgba(226, 213, 188, 0.4), transparent 60%)" }}
           />
           <div className="relative">
             <h2 className="text-4xl sm:text-5xl font-bold">
@@ -355,12 +397,75 @@ function CTA() {
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
               Whether it's a prototype, a brand, a service, or a workshop — we'll meet you where you are.
             </p>
-            <Link
-              to="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105 glow-mustard"
+            <div className="mt-8 flex justify-center">
+              <Magnet padding={40} magnetStrength={4}>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105 glow-mustard"
+                >
+                  Start a conversation <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Magnet>
+            </div>
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
+function CollaborationPartner() {
+  return (
+    <section className="mx-auto max-w-7xl px-6 py-20 border-t border-border/40">
+      <Reveal>
+        <div className="text-center mb-12">
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">Collaborations & Partnerships</p>
+          <h2 className="mt-3 text-4xl sm:text-5xl font-bold tracking-tight">Our Collaboration Partner</h2>
+        </div>
+      </Reveal>
+
+      <Reveal delay={0.15}>
+        <div 
+          className="relative max-w-4xl mx-auto rounded-3xl border border-border bg-card p-8 sm:p-12 overflow-hidden shadow-sm flex flex-col md:flex-row items-center justify-between gap-10 hover:border-primary/50 transition-all duration-500"
+          style={{ background: "var(--gradient-card)" }}
+        >
+          {/* Subtle light effects */}
+          <div 
+            className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full opacity-35 blur-3xl"
+            style={{ background: "radial-gradient(circle, rgba(226,213,188,0.5), transparent 70%)" }}
+          />
+
+          {/* Partner Logo */}
+          <div className="flex-1 flex justify-center">
+            <motion.div 
+              whileHover={{ scale: 1.05, rotate: 1 }}
+              className="relative p-6 bg-background rounded-2xl border border-border/80 shadow-md flex items-center justify-center max-w-[280px]"
             >
-              Start a conversation <ArrowRight className="h-4 w-4" />
-            </Link>
+              <img 
+                src="/video_images/nimzliot_logo.png" 
+                alt="NIMZLiot Logo" 
+                className="w-full h-auto object-contain max-h-[80px]"
+              />
+            </motion.div>
+          </div>
+
+          {/* Partner Details */}
+          <div className="flex-[1.5] text-left space-y-4">
+            <span className="text-[10px] font-bold uppercase tracking-wider bg-[#E2D5BC] px-3.5 py-1.5 rounded-full border border-primary/20 text-[#1C1917]/85">
+              Technology & Research Partner
+            </span>
+            <h3 className="text-2xl font-bold font-display text-[#1C1917]">NIMZLiot</h3>
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              We collaborate with NIMZLiot to design advanced Internet of Things (IoT) hardware, conduct embedded research, build smart automation controllers, and foster hands-on workshops in industrial technology domains.
+            </p>
+            <div className="pt-2">
+              <a 
+                href="/contact"
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:text-[#1C1917] transition-colors"
+              >
+                Discuss Collaboration Options <ArrowRight className="h-4 w-4" />
+              </a>
+            </div>
           </div>
         </div>
       </Reveal>
