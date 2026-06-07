@@ -84,7 +84,7 @@ export function Navbar() {
               />
               <span className="absolute -inset-0.5 -z-10 rounded-xl bg-primary/40 blur opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.div>
-            <span className="font-display text-lg font-bold tracking-tight text-[#1C1917]">
+            <span className="font-display text-lg font-bold tracking-tight text-foreground">
               MUSTARD<span className="text-primary font-extrabold">ONE</span>
             </span>
           </Link>
