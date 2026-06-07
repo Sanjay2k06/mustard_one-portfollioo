@@ -49,24 +49,24 @@ export function DivisionPage({
     switch (theme) {
       case "studio":
         return {
-          "--background": "#0A0516",
-          "--foreground": "#FFFFFF",
-          "--card": "#130B29",
-          "--card-foreground": "#FFFFFF",
-          "--primary": "#6D3EF5",
-          "--primary-foreground": "#FFFFFF",
-          "--secondary": "#7C4DFF",
+          "--background": "#1A1A1A",
+          "--foreground": "#F5F7FA",
+          "--card": "#242424",
+          "--card-foreground": "#F5F7FA",
+          "--primary": "#F5B400",
+          "--primary-foreground": "#1A1A1A",
+          "--secondary": "#FF8A00",
           "--secondary-foreground": "#FFFFFF",
-          "--muted": "#5B21B6",
-          "--muted-foreground": "#A78BFA",
-          "--border": "#1F123F",
-          "--ring": "#6D3EF5",
-          "--gradient-mustard": "linear-gradient(135deg, #6D3EF5, #7C4DFF)",
-          "--gradient-card": "linear-gradient(180deg, #130B29, #0A0516)",
-          "--glass-bg": "rgba(19, 11, 41, 0.8)",
-          "--glass-border": "rgba(124, 77, 255, 0.35)",
-          color: "#FFFFFF",
-          backgroundColor: "#0A0516",
+          "--muted": "#2A2A2A",
+          "--muted-foreground": "#9CA3AF",
+          "--border": "#2E2E2E",
+          "--ring": "#2563EB",
+          "--gradient-mustard": "linear-gradient(135deg, #F5B400, #FF8A00)",
+          "--gradient-card": "linear-gradient(180deg, #242424, #1A1A1A)",
+          "--glass-bg": "rgba(36, 36, 36, 0.85)",
+          "--glass-border": "rgba(245, 180, 0, 0.25)",
+          color: "#F5F7FA",
+          backgroundColor: "#1A1A1A",
         } as React.CSSProperties;
       case "care":
         return {
@@ -161,7 +161,7 @@ export function DivisionPage({
                 {theme === "studio" && (
                   <Link
                     to="/contact"
-                    className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-[#A78BFA] hover:text-[#7C4DFF] transition-all cursor-pointer w-fit"
+                    className="mt-4 inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-secondary transition-all cursor-pointer w-fit"
                   >
                     Book Now <ArrowRight className="h-3.5 w-3.5" />
                   </Link>

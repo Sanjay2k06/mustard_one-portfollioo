@@ -22,9 +22,9 @@ const projects: Project[] = [
     category: "Portrait Art",
     desc: "Realistic hand drawn portraits crafted with precision, detail, and artistic excellence.",
     image: "/video_images/pencil.jpeg",
-    bgTheme: "#0A0516", // Deep Violet base
-    accentColor: "#6D3EF5", // Creative Purple
-    secondaryAccent: "#A78BFA" // Lavender Accent
+    bgTheme: "#121212",
+    accentColor: "#F5B400",
+    secondaryAccent: "#FF8A00"
   },
   {
     id: "water",
@@ -32,9 +32,9 @@ const projects: Project[] = [
     category: "Watercolor Art",
     desc: "Vibrant watercolor artworks that transform memories and ideas into timeless creations.",
     image: "/video_images/water.jpeg",
-    bgTheme: "#0E0720", // Deep Violet offset
-    accentColor: "#7C4DFF", // Royal Purple
-    secondaryAccent: "#A78BFA" // Lavender Accent
+    bgTheme: "#161616",
+    accentColor: "#2563EB",
+    secondaryAccent: "#FF8A00"
   },
   {
     id: "thread",
@@ -42,9 +42,9 @@ const projects: Project[] = [
     category: "Embroidery Art",
     desc: "Unique handcrafted portraits created using threads for a distinctive artistic appearance.",
     image: "/video_images/threat.jpeg",
-    bgTheme: "#12092B", // Slightly lighter deep violet
-    accentColor: "#6D3EF5", // Creative Purple
-    secondaryAccent: "#A78BFA" // Lavender Accent
+    bgTheme: "#1E1E1E",
+    accentColor: "#FF8A00",
+    secondaryAccent: "#F5B400"
   },
   {
     id: "brand",
@@ -52,9 +52,9 @@ const projects: Project[] = [
     category: "Brand & Identity",
     desc: "Logo design, poster design, social media creatives, business branding, and complete visual identity solutions.",
     image: "/video_images/brand.jpeg",
-    bgTheme: "#0E0720",
-    accentColor: "#7C4DFF", // Royal Purple
-    secondaryAccent: "#A78BFA" // Lavender Accent
+    bgTheme: "#141414",
+    accentColor: "#F5B400",
+    secondaryAccent: "#2563EB"
   },
   {
     id: "film",
@@ -62,9 +62,9 @@ const projects: Project[] = [
     category: "Film & Media",
     desc: "End-to-end production services including concept development, filming, direction, and storytelling.",
     image: "/video_images/video.jpeg",
-    bgTheme: "#0A0516",
-    accentColor: "#6D3EF5", // Creative Purple
-    secondaryAccent: "#A78BFA" // Lavender Accent
+    bgTheme: "#1C1C1C",
+    accentColor: "#FF8A00",
+    secondaryAccent: "#F5B400"
   },
   {
     id: "edit",
@@ -72,9 +72,9 @@ const projects: Project[] = [
     category: "Video Production",
     desc: "Professional editing for reels, advertisements, promotional videos, YouTube content, and cinematic projects.",
     image: "/video_images/edit.jpeg",
-    bgTheme: "#12092B",
-    accentColor: "#7C4DFF", // Royal Purple
-    secondaryAccent: "#A78BFA" // Lavender Accent
+    bgTheme: "#181818",
+    accentColor: "#2563EB",
+    secondaryAccent: "#F5F7FA"
   }
 ];
 
@@ -124,7 +124,7 @@ export function CreativeShowcase({
       <div
         className="absolute inset-0 pointer-events-none opacity-20"
         style={{
-          backgroundImage: "linear-gradient(rgba(124, 77, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(124, 77, 255, 0.04) 1px, transparent 1px)",
+          backgroundImage: `linear-gradient(${activeProject.accentColor}0a 1px, transparent 1px), linear-gradient(90deg, ${activeProject.accentColor}0a 1px, transparent 1px)`,
           backgroundSize: "80px 80px",
           maskImage: "radial-gradient(circle at center, black, transparent 90%)",
           WebkitMaskImage: "radial-gradient(circle at center, black, transparent 90%)"
@@ -150,14 +150,17 @@ export function CreativeShowcase({
           {/* Column 1: Featured Content (Span 4) */}
           <div className="col-span-4 flex flex-col justify-center space-y-6">
             <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-[0.3em] text-[#A78BFA]">
+              <span 
+                className="text-[10px] font-extrabold uppercase tracking-[0.3em]"
+                style={{ color: activeProject.accentColor }}
+              >
                 Creative Portfolio
               </span>
               <h2 className="font-display text-4xl lg:text-5xl font-bold tracking-tight text-[#FFFFFF] leading-[1.08] mt-1">
                 Explore Our <br />
                 <span className="text-gradient-mustard">Creative Works.</span>
               </h2>
-              <p className="text-[#DCD7EC] text-[11px] leading-relaxed mt-2 max-w-[320px]">
+              <p className="text-muted-foreground/80 text-[11px] leading-relaxed mt-2 max-w-[320px]">
                 A curated collection of artworks, visual branding, cinematic productions, and creative experiences crafted by MustardStudio.
               </p>
             </div>
@@ -174,15 +177,18 @@ export function CreativeShowcase({
                   className="space-y-2.5"
                 >
                   <span
-                    className="text-[8px] font-extrabold uppercase tracking-[0.2em] px-2.5 py-1 rounded bg-[#6D3EF5]/15"
-                    style={{ color: activeProject.secondaryAccent }}
+                    className="text-[8px] font-extrabold uppercase tracking-[0.2em] px-2.5 py-1 rounded"
+                    style={{ 
+                      backgroundColor: `${activeProject.accentColor}25`,
+                      color: activeProject.secondaryAccent 
+                    }}
                   >
                     {activeProject.category}
                   </span>
                   <h3 className="font-display text-2xl font-extrabold text-[#FFFFFF] tracking-tight">
                     {activeProject.title}
                   </h3>
-                  <p className="text-[#DCD7EC] text-xs leading-relaxed max-w-[340px]">
+                  <p className="text-muted-foreground/80 text-xs leading-relaxed max-w-[340px]">
                     {activeProject.desc}
                   </p>
                 </motion.div>
@@ -194,7 +200,11 @@ export function CreativeShowcase({
               <Magnet padding={20} magnetStrength={3}>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#6D3EF5] hover:bg-[#7C4DFF] px-6 py-3.5 text-xs font-bold text-[#FFFFFF] transition-all shadow-lg shadow-[#6D3EF5]/20 hover:scale-105 cursor-pointer w-fit"
+                  className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-xs font-bold text-[#FFFFFF] transition-all shadow-lg hover:scale-105 cursor-pointer w-fit"
+                  style={{
+                    backgroundColor: activeProject.accentColor,
+                    boxShadow: `0 10px 20px -5px ${activeProject.accentColor}40`
+                  }}
                 >
                   Book Now <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
@@ -223,7 +233,7 @@ export function CreativeShowcase({
                     className={`text-[9px] font-mono transition-colors duration-300 ${
                       activeProjectId === proj.id
                         ? "text-[#FFFFFF] font-bold"
-                        : "text-[#6D628B]"
+                        : "text-[#5B5B5B]"
                     }`}
                   >
                     {(idx + 1).toString().padStart(2, "0")}
@@ -234,19 +244,23 @@ export function CreativeShowcase({
                       className={`text-[11px] uppercase tracking-wider font-extrabold transition-colors duration-300 ${
                         activeProjectId === proj.id
                           ? "text-[#FFFFFF]"
-                          : "text-[#6D628B] group-hover:text-stone-300"
+                          : "text-[#7C7C7C] group-hover:text-stone-300"
                       }`}
                     >
                       {proj.title}
                     </h4>
-                    <span className="text-[8px] text-[#A78BFA] block font-semibold">
+                    <span 
+                      className="text-[8px] block font-semibold transition-colors duration-300"
+                      style={{ color: activeProjectId === proj.id ? proj.secondaryAccent : '#7C7C7C' }}
+                    >
                       {proj.category}
                     </span>
                   </div>
 
                   <div className="w-1.5 h-1.5 rounded-full bg-stone-800/40 overflow-hidden relative shrink-0">
                     <motion.div
-                      className="absolute inset-0 bg-[#7C4DFF]"
+                      className="absolute inset-0"
+                      style={{ backgroundColor: proj.accentColor }}
                       initial={{ scale: 0 }}
                       animate={{ scale: activeProjectId === proj.id ? 1 : 0 }}
                       transition={{ duration: 0.2 }}
@@ -264,7 +278,10 @@ export function CreativeShowcase({
           
           {/* Header */}
           <div className="space-y-1">
-            <span className="text-[9px] font-extrabold uppercase tracking-[0.25em] text-[#A78BFA]">
+            <span 
+              className="text-[9px] font-extrabold uppercase tracking-[0.25em]"
+              style={{ color: activeProject.accentColor }}
+            >
               Creative Portfolio
             </span>
             <h2 className="font-display text-3xl font-bold tracking-tight text-[#FFFFFF]">
@@ -286,11 +303,20 @@ export function CreativeShowcase({
               <button
                 key={proj.id}
                 onClick={() => setActiveProjectId(proj.id)}
-                className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider border shrink-0 transition-all cursor-pointer ${
+                className="px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider border shrink-0 transition-all cursor-pointer"
+                style={
                   activeProjectId === proj.id
-                    ? "bg-[#6D3EF5] text-[#FFFFFF] border-[#6D3EF5]"
-                    : "bg-[#130B29]/60 text-[#A78BFA] border-[#1F123F] hover:border-[#6D3EF5]/30"
-                }`}
+                    ? {
+                        backgroundColor: proj.accentColor,
+                        borderColor: proj.accentColor,
+                        color: "#1A1A1A",
+                      }
+                    : {
+                        backgroundColor: "rgba(26, 26, 26, 0.6)",
+                        borderColor: "rgba(255, 255, 255, 0.08)",
+                        color: "#A3A3A3",
+                      }
+                }
               >
                 {proj.title}
               </button>
@@ -298,21 +324,28 @@ export function CreativeShowcase({
           </div>
 
           {/* Details & Action */}
-          <div className="bg-[#130B29]/40 border border-[#1F123F] rounded-3xl p-5 space-y-3">
+          <div className="bg-[#242424]/60 border border-[#2E2E2E] rounded-3xl p-5 space-y-3">
             <div>
-              <span className="text-[8px] font-extrabold uppercase tracking-widest text-[#A78BFA]">
+              <span 
+                className="text-[8px] font-extrabold uppercase tracking-widest"
+                style={{ color: activeProject.accentColor }}
+              >
                 {activeProject.category}
               </span>
               <h3 className="font-display text-xl font-bold text-[#FFFFFF] mt-0.5">
                 {activeProject.title}
               </h3>
             </div>
-            <p className="text-[#DCD7EC] text-xs leading-relaxed">
+            <p className="text-muted-foreground/80 text-xs leading-relaxed">
               {activeProject.desc}
             </p>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-1.5 rounded-full bg-[#6D3EF5] px-5 py-2.5 text-[10px] font-bold text-[#FFFFFF] hover:bg-[#7C4DFF] transition-all cursor-pointer w-full justify-center shadow-md shadow-[#6D3EF5]/15"
+              className="inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-[10px] font-bold text-[#FFFFFF] transition-all cursor-pointer w-full justify-center shadow-md"
+              style={{
+                backgroundColor: activeProject.accentColor,
+                boxShadow: `0 4px 12px ${activeProject.accentColor}25`
+              }}
             >
               Book Now <ArrowRight className="h-3 w-3" />
             </Link>
@@ -355,18 +388,18 @@ function ArtworkCard({ project, isActive }: ArtworkCardProps) {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       className={`relative w-full max-w-[420px] aspect-[4/5] rounded-[24px] overflow-hidden p-[1px] cursor-pointer transition-all duration-500 shadow-md block ${
-        isActive ? "scale-100 opacity-100 shadow-[#6D3EF5]/10 shadow-lg" : "scale-[0.97] opacity-80"
+        isActive ? "scale-100 opacity-100 shadow-stone-900/60 shadow-lg" : "scale-[0.97] opacity-80"
       }`}
       style={{
         background: isHovered
           ? `radial-gradient(300px circle at ${mousePos.x}px ${mousePos.y}px, ${project.accentColor}60, ${project.accentColor}10 60%, transparent 100%)`
-          : "rgba(109, 62, 245, 0.2)"
+          : `${project.accentColor}25`
       }}
     >
-      <div className="w-full h-full bg-[#130B29]/85 backdrop-blur-sm rounded-[23px] overflow-hidden relative flex flex-col justify-between p-4">
+      <div className="w-full h-full bg-[#242424]/90 backdrop-blur-sm rounded-[23px] overflow-hidden relative flex flex-col justify-between p-4">
         
         {/* Core Media Display Container */}
-        <div className="w-full h-[88%] rounded-[18px] overflow-hidden border border-[#1F123F] relative bg-[#0A0516]">
+        <div className="w-full h-[88%] rounded-[18px] overflow-hidden border border-[#2E2E2E] relative bg-[#1A1A1A]">
           <motion.img
             key={project.id}
             src={project.image}
@@ -378,11 +411,11 @@ function ArtworkCard({ project, isActive }: ArtworkCardProps) {
           />
 
           {/* CUSTOM CATEGORY ANIMATIONS */}
-          {project.id === "pencil" && <GraphiteParticles />}
-          {project.id === "water" && <WatercolorSplash isActive={isActive} />}
-          {project.id === "thread" && <ThreadLines isActive={isActive} />}
+          {project.id === "pencil" && <GraphiteParticles project={project} />}
+          {project.id === "water" && <WatercolorSplash isActive={isActive} project={project} />}
+          {project.id === "thread" && <ThreadLines isActive={isActive} project={project} />}
           {project.id === "film" && <FilmReelAnimation isActive={isActive} />}
-          {project.id === "edit" && <TimelineScrubAnimation isActive={isActive} />}
+          {project.id === "edit" && <TimelineScrubAnimation isActive={isActive} project={project} />}
 
           {/* Elegant Dark Glass Overlay on Hover */}
           <motion.div
@@ -392,16 +425,25 @@ function ArtworkCard({ project, isActive }: ArtworkCardProps) {
             className="absolute inset-0 bg-stone-950/85 backdrop-blur-[4px] p-6 flex flex-col justify-end z-25"
           >
             <div className="space-y-2.5">
-              <span className="text-[9px] font-extrabold tracking-widest uppercase text-[#A78BFA] px-2 py-0.5 rounded bg-[#A78BFA]/10 w-fit">
+              <span 
+                className="text-[9px] font-extrabold tracking-widest uppercase px-2 py-0.5 rounded w-fit"
+                style={{ 
+                  backgroundColor: `${project.accentColor}20`,
+                  color: project.secondaryAccent 
+                }}
+              >
                 {project.category}
               </span>
               <h4 className="font-display text-xl font-bold text-[#FFFFFF] leading-snug">
                 {project.title}
               </h4>
-              <p className="text-[#DCD7EC] text-[11px] leading-relaxed">
+              <p className="text-muted-foreground/80 text-[11px] leading-relaxed">
                 {project.desc}
               </p>
-              <div className="pt-2 flex items-center gap-1.5 text-xs text-[#A78BFA] font-bold">
+              <div 
+                className="pt-2 flex items-center gap-1.5 text-xs font-bold"
+                style={{ color: project.accentColor }}
+              >
                 Book Now <ArrowRight className="h-3.5 w-3.5" />
               </div>
             </div>
@@ -411,7 +453,10 @@ function ArtworkCard({ project, isActive }: ArtworkCardProps) {
         {/* Static Title Header Line at the bottom of the card */}
         <div className="px-1 pt-2 pb-1 flex justify-between items-center z-10">
           <div>
-            <span className="text-[8px] font-bold tracking-widest uppercase text-[#A78BFA]">
+            <span 
+              className="text-[8px] font-bold tracking-widest uppercase"
+              style={{ color: project.secondaryAccent }}
+            >
               {project.category}
             </span>
             <h3 className="font-display text-xs font-bold text-[#FFFFFF] tracking-tight transition-colors duration-300">
@@ -431,7 +476,7 @@ function ArtworkCard({ project, isActive }: ArtworkCardProps) {
    ------------------------------------------------------------------------- */
 
 // Pencil Sketch - Floating graphite dust particles
-function GraphiteParticles() {
+function GraphiteParticles({ project }: { project: Project }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -479,7 +524,8 @@ function GraphiteParticles() {
         }
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(167, 139, 250, ${p.opacity * 0.4})`; // match Lavender Accent
+        ctx.globalAlpha = p.opacity * 0.5;
+        ctx.fillStyle = project.secondaryAccent;
         ctx.fill();
       });
       animationId = requestAnimationFrame(render);
@@ -489,13 +535,13 @@ function GraphiteParticles() {
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [project.secondaryAccent]);
 
   return <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none z-10 w-full h-full" />;
 }
 
 // Water Painting - Expanding color watercolor splotches
-function WatercolorSplash({ isActive }: { isActive: boolean }) {
+function WatercolorSplash({ isActive, project }: { isActive: boolean; project: Project }) {
   return (
     <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden flex items-center justify-center">
       {isActive && (
@@ -505,7 +551,8 @@ function WatercolorSplash({ isActive }: { isActive: boolean }) {
             initial={{ scale: 0, opacity: 0, rotate: -25 }}
             animate={{ scale: 1.4, opacity: 0.15, rotate: 5 }}
             transition={{ duration: 1.8, ease: "easeOut" }}
-            className="absolute w-full h-full text-[#7C4DFF] fill-current"
+            className="absolute w-full h-full fill-current"
+            style={{ color: project.accentColor }}
           >
             <path d="M100,20 C120,40 140,20 160,40 C180,60 160,80 180,100 C200,120 180,140 160,160 C140,180 120,160 100,180 C80,200 60,180 40,160 C20,140 40,120 20,100 C0,80 20,60 40,40 C60,20 80,0 100,20 Z" />
           </motion.svg>
@@ -514,7 +561,8 @@ function WatercolorSplash({ isActive }: { isActive: boolean }) {
             initial={{ scale: 0, opacity: 0, rotate: 30 }}
             animate={{ scale: 1.25, opacity: 0.15, rotate: -15 }}
             transition={{ duration: 2.2, delay: 0.2, ease: "easeOut" }}
-            className="absolute w-4/5 h-4/5 text-[#A78BFA] fill-current"
+            className="absolute w-4/5 h-4/5 fill-current"
+            style={{ color: project.secondaryAccent }}
           >
             <path d="M100,30 C130,15 150,45 170,60 C190,75 165,105 180,130 C195,155 150,170 130,160 C110,150 90,190 70,170 C50,150 30,165 20,140 C10,115 45,95 30,70 C15,45 60,30 70,45 Z" />
           </motion.svg>
@@ -525,11 +573,14 @@ function WatercolorSplash({ isActive }: { isActive: boolean }) {
 }
 
 // Thread Portrait - Sewing geometry lines drawing across coordinate points
-function ThreadLines({ isActive }: { isActive: boolean }) {
+function ThreadLines({ isActive, project }: { isActive: boolean; project: Project }) {
   return (
     <div className="absolute inset-0 pointer-events-none z-10">
       {isActive && (
-        <svg className="w-full h-full stroke-[#A78BFA]/30 stroke-[0.75] fill-none">
+        <svg 
+          className="w-full h-full stroke-[0.75] fill-none"
+          style={{ stroke: `${project.secondaryAccent}4d` }}
+        >
           {Array.from({ length: 16 }).map((_, i) => (
             <motion.line
               key={`line-1-${i}`}
@@ -570,23 +621,23 @@ function FilmReelAnimation({ isActive }: { isActive: boolean }) {
           {/* Film strip left side */}
           <div className="absolute left-0 top-0 bottom-0 w-6 bg-stone-950/95 flex flex-col justify-around py-1 items-center opacity-85 z-20">
             {Array.from({ length: 9 }).map((_, i) => (
-              <div key={i} className="w-2.5 h-3 bg-[#0A0516] rounded-sm" />
+              <div key={i} className="w-2.5 h-3 bg-[#1A1A1A] rounded-sm" />
             ))}
           </div>
 
           {/* Film strip right side */}
           <div className="absolute right-0 top-0 bottom-0 w-6 bg-stone-950/95 flex flex-col justify-around py-1 items-center opacity-85 z-20">
             {Array.from({ length: 9 }).map((_, i) => (
-              <div key={i} className="w-2.5 h-3 bg-[#0A0516] rounded-sm" />
+              <div key={i} className="w-2.5 h-3 bg-[#1A1A1A] rounded-sm" />
             ))}
           </div>
 
           {/* Viewfinder Overlay */}
           <div className="absolute inset-x-6 inset-y-3 border border-stone-100/35 flex flex-col justify-between p-2 font-mono text-[7px] text-stone-200 z-20">
-            <div className="absolute top-1.5 left-1.5 w-3 h-3 border-t border-l border-[#A78BFA]" />
-            <div className="absolute top-1.5 right-1.5 w-3 h-3 border-t border-r border-[#A78BFA]" />
-            <div className="absolute bottom-1.5 left-1.5 w-3 h-3 border-b border-l border-[#A78BFA]" />
-            <div className="absolute bottom-1.5 right-1.5 w-3 h-3 border-b border-r border-[#A78BFA]" />
+            <div className="absolute top-1.5 left-1.5 w-3 h-3 border-t border-l border-[#FF8A00]" />
+            <div className="absolute top-1.5 right-1.5 w-3 h-3 border-t border-r border-[#FF8A00]" />
+            <div className="absolute bottom-1.5 left-1.5 w-3 h-3 border-b border-l border-[#FF8A00]" />
+            <div className="absolute bottom-1.5 right-1.5 w-3 h-3 border-b border-r border-[#FF8A00]" />
 
             <div className="flex justify-between items-center w-full">
               <div className="flex items-center gap-1">
@@ -610,15 +661,25 @@ function FilmReelAnimation({ isActive }: { isActive: boolean }) {
 }
 
 // Video Editing - Audio timeline track scrubbing
-function TimelineScrubAnimation({ isActive }: { isActive: boolean }) {
+function TimelineScrubAnimation({ isActive, project }: { isActive: boolean; project: Project }) {
   return (
     <div className="absolute inset-x-0 bottom-0 h-20 bg-stone-950/95 border-t border-stone-800 p-2 z-20 pointer-events-none font-mono text-[7px] text-stone-400 flex flex-col justify-between">
       <div className="space-y-1">
         {/* Video Track V1 */}
         <div className="relative h-3 bg-stone-900 rounded overflow-hidden flex items-center px-1">
           <span className="text-[5px] text-stone-600 mr-1.5 font-bold">V1</span>
-          <div className="h-2 w-20 bg-[#6D3EF5]/30 rounded border border-[#6D3EF5]/60 flex items-center justify-center text-[4px] text-stone-300">C01_grad.mov</div>
-          <div className="h-2 w-24 bg-[#7C4DFF]/30 rounded border border-[#7C4DFF]/60 flex items-center justify-center text-[4px] text-stone-300 ml-1">E02_end.mov</div>
+          <div 
+            className="h-2 w-20 rounded border flex items-center justify-center text-[4px] text-stone-300"
+            style={{ backgroundColor: `${project.accentColor}33`, borderColor: project.accentColor }}
+          >
+            C01_grad.mov
+          </div>
+          <div 
+            className="h-2 w-24 rounded border flex items-center justify-center text-[4px] text-stone-300 ml-1"
+            style={{ backgroundColor: `${project.secondaryAccent}33`, borderColor: project.secondaryAccent }}
+          >
+            E02_end.mov
+          </div>
         </div>
         {/* Audio Track A1 */}
         <div className="relative h-3 bg-stone-900 rounded overflow-hidden flex items-center px-1">
