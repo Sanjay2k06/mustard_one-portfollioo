@@ -35,7 +35,7 @@ const divisions = [
     tag: "Creative & Media",
     desc: "Where imagination meets craftsmanship.",
     icon: Palette,
-    logo: "/video_images/mustard_arts.png",
+    logo: "/video_images/mustardstudio.png",
     items: ["Portrait Sketches", "Watercolor Paintings", "Logo Design", "Brand Identity", "Video Editing", "Motion Graphics", "Short Film Production"],
   },
   {

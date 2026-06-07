@@ -577,17 +577,6 @@ function BrandMockups({ isActive }: { isActive: boolean }) {
             <div className="text-[7px] tracking-widest font-display text-[#A78BFA] font-extrabold">MUSTARD</div>
             <div className="text-[5px] text-stone-400 font-mono">Creative Suite</div>
           </motion.div>
-
-          {/* Mock Brand Tag */}
-          <motion.div
-            initial={{ x: 120, y: -40, rotate: 20, opacity: 0 }}
-            animate={{ x: 80, y: 40, rotate: 12, opacity: 0.95 }}
-            transition={{ duration: 1.1, type: "spring", stiffness: 50 }}
-            className="absolute w-20 h-28 bg-[#130B29] border border-[#1F123F] rounded-md p-2.5 flex flex-col justify-between shadow-lg text-stone-200"
-          >
-            <div className="w-full h-14 bg-[#6D3EF5]/10 rounded flex items-center justify-center font-bold text-[8px] text-[#A78BFA]">M_MARK</div>
-            <div className="text-[6px] font-bold text-right text-stone-500">2026 BRAND</div>
-          </motion.div>
         </>
       )}
     </div>

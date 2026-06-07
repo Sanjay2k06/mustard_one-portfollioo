@@ -13,7 +13,7 @@ export const Route = createFileRoute("/services/mustardstudio")({
   component: () => (
     <DivisionPage
       eyebrow="MustardStudio"
-      logo="/video_images/mustard_arts.png"
+      logo="/video_images/mustardstudio.png"
       theme="studio"
       title={<>Where creativity <span className="text-gradient-mustard">comes alive.</span></>}
       subtitle="Hand-crafted art, identity design, and moving images — built with patience and personality."

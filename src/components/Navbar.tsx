@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const services = [
   { to: "/services/mustardworks", label: "MustardWork", desc: "Engineering & Innovation", icon: Cpu, logo: "/video_images/mustard_work.png" },
-  { to: "/services/mustardstudio", label: "MustardStudio", desc: "Creative & Media", icon: Palette, logo: "/video_images/mustard_arts.png" },
+  { to: "/services/mustardstudio", label: "MustardStudio", desc: "Creative & Media", icon: Palette, logo: "/video_images/mustardstudio.png" },
   { to: "/services/mustardcare", label: "MustardCare", desc: "Technical Support", icon: Wrench, logo: "/video_images/mustard_care.png" },
   { to: "/services/mustardlearn", label: "MustardLearn", desc: "Education & Skills", icon: GraduationCap, logo: "/video_images/mustard_learn.png" },
 ] as const;
