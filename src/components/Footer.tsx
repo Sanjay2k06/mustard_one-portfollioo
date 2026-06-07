@@ -82,11 +82,24 @@ export function Footer() {
 
         {/* Bottom copyright and tagline */}
         <div className="mt-16 pt-8 border-t border-border/60 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} MustardOne. All rights reserved.</p>
+          <p>
+            © 2025 MustardOne. All rights reserved.{" "}
+            <span className="inline-block ml-1">
+              Made by{" "}
+              <a 
+                href="https://taekni.in" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="hover:text-primary transition-colors font-medium underline decoration-primary/30 decoration-1 underline-offset-2"
+              >
+                TÆKNI
+              </a>
+            </span>
+          </p>
           <div className="flex items-center gap-2">
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-card/65 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-primary shadow-[0_2px_10px_-4px_rgba(209,191,157,0.2)] hover:border-primary/50 transition-colors cursor-pointer">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary select-none">
               As Your Expectations
-            </div>
+            </span>
           </div>
         </div>
       </div>
