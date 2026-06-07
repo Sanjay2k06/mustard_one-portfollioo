@@ -9,7 +9,6 @@ import {
   Linkedin, 
   Youtube, 
   Facebook, 
-  Github, 
   Clock, 
   ArrowRight,
   ChevronDown
@@ -964,7 +963,7 @@ Message: ${formData.message}`;
               {/* YouTube */}
               <Magnet padding={12} magnetStrength={3}>
                 <a
-                  href="https://www.youtube.com/@mustardone"
+                  href="https://youtube.com/@onemustard?si=3S078QQWazvqKl3y"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-[#1C1917] hover:bg-[#1C1917] hover:text-[#F7F4EE] hover:shadow-[0_0_20px_rgba(28,25,23,0.2)] transition-all duration-300 hover:scale-110 cursor-pointer"
@@ -982,18 +981,6 @@ Message: ${formData.message}`;
                   className="flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-[#1C1917] hover:bg-[#1C1917] hover:text-[#F7F4EE] hover:shadow-[0_0_20px_rgba(28,25,23,0.2)] transition-all duration-300 hover:scale-110 cursor-pointer"
                 >
                   <Facebook className="h-6 w-6" />
-                </a>
-              </Magnet>
-
-              {/* GitHub */}
-              <Magnet padding={12} magnetStrength={3}>
-                <a
-                  href="https://github.com/mustardone-gateway"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-[#1C1917] hover:bg-[#1C1917] hover:text-[#F7F4EE] hover:shadow-[0_0_20px_rgba(28,25,23,0.2)] transition-all duration-300 hover:scale-110 cursor-pointer"
-                >
-                  <Github className="h-6 w-6" />
                 </a>
               </Magnet>
             </div>

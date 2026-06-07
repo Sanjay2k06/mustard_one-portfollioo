@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Github, Linkedin, Facebook, Instagram, Mail, MapPin } from "lucide-react";
+import { Youtube, Linkedin, Facebook, Instagram, Mail, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
 export function Footer() {
@@ -38,7 +38,7 @@ export function Footer() {
 
             {/* Social Links */}
             <div className="flex items-center gap-3 pt-2">
-              <SocialIcon href="https://github.com" icon={Github} />
+              <SocialIcon href="https://youtube.com/@onemustard?si=3S078QQWazvqKl3y" icon={Youtube} />
               <SocialIcon href="https://www.linkedin.com/company/mustardworks/" icon={Linkedin} />
               <SocialIcon href="https://www.facebook.com/share/1HidNozubs/" icon={Facebook} />
               <SocialIcon href="https://www.instagram.com/onemustard?igsh=b3VlajJnczAyZmps" icon={Instagram} />

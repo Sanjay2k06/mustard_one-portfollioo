@@ -381,7 +381,6 @@ function ArtworkCard({ project, isActive }: ArtworkCardProps) {
           {project.id === "pencil" && <GraphiteParticles />}
           {project.id === "water" && <WatercolorSplash isActive={isActive} />}
           {project.id === "thread" && <ThreadLines isActive={isActive} />}
-          {project.id === "brand" && <BrandMockups isActive={isActive} />}
           {project.id === "film" && <FilmReelAnimation isActive={isActive} />}
           {project.id === "edit" && <TimelineScrubAnimation isActive={isActive} />}
 
@@ -561,27 +560,6 @@ function ThreadLines({ isActive }: { isActive: boolean }) {
   );
 }
 
-// Brand Design Suite - Collateral overlapping floating mockups
-function BrandMockups({ isActive }: { isActive: boolean }) {
-  return (
-    <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
-      {isActive && (
-        <>
-          {/* Mock Business Card */}
-          <motion.div
-            initial={{ x: -100, y: 70, rotate: -15, opacity: 0 }}
-            animate={{ x: -50, y: 130, rotate: -6, opacity: 0.95 }}
-            transition={{ duration: 0.9, type: "spring", stiffness: 60 }}
-            className="absolute w-28 h-16 bg-stone-900 border border-stone-800 text-stone-100 rounded-md p-2 flex flex-col justify-between shadow-xl"
-          >
-            <div className="text-[7px] tracking-widest font-display text-[#A78BFA] font-extrabold">MUSTARD</div>
-            <div className="text-[5px] text-stone-400 font-mono">Creative Suite</div>
-          </motion.div>
-        </>
-      )}
-    </div>
-  );
-}
 
 // Short Film Production - Viewfinder HUD and Film loop
 function FilmReelAnimation({ isActive }: { isActive: boolean }) {
