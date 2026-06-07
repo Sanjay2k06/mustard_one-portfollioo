@@ -65,11 +65,11 @@ export function Footer() {
             </h4>
             <div className="rounded-2xl border border-border/80 bg-card/30 p-4 space-y-3.5 shadow-inner">
               <a 
-                href="mailto:contact@mustardone.com" 
+                href="mailto:mustardworks25@gmail.com" 
                 className="flex items-center gap-2.5 text-xs text-muted-foreground hover:text-primary transition-colors group/mail"
               >
                 <Mail className="h-4 w-4 text-primary group-hover/mail:scale-110 transition-transform" />
-                <span>contact@mustardone.com</span>
+                <span>mustardworks25@gmail.com</span>
               </a>
               <div className="flex items-start gap-2.5 text-xs text-muted-foreground leading-relaxed">
                 <MapPin className="h-4 w-4 text-primary shrink-0" />

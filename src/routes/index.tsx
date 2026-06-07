@@ -366,9 +366,6 @@ function ProjectsShowcase() {
                 <p className="text-xs uppercase tracking-[0.2em] text-primary font-medium">{p.cat}</p>
                 <h3 className="mt-2 text-2xl font-bold tracking-tight font-display">{p.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground line-clamp-3 leading-relaxed">{p.desc}</p>
-                <div className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary/80 transition-colors group-hover:text-primary">
-                  View Project <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </div>
               </div>
             </article>
           </Reveal>
