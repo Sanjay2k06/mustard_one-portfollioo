@@ -17,7 +17,7 @@ export const Route = createFileRoute("/services/mustardstudio")({
       theme="studio"
       title={<>Where creativity <span className="text-gradient-mustard">comes alive.</span></>}
       subtitle="Hand-crafted art, identity design, and moving images — built with patience and personality."
-      galleryAccent="from-amber-500/20"
+      galleryAccent="from-purple-500/20"
       services={[
         { title: "Pencil Sketch", desc: "Realistic hand drawn portraits crafted with precision, detail, and artistic excellence." },
         { title: "Water Painting", desc: "Vibrant watercolor artworks that transform memories and ideas into timeless creations." },

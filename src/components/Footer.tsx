@@ -73,7 +73,7 @@ export function Footer() {
               </a>
               <div className="flex items-start gap-2.5 text-xs text-muted-foreground leading-relaxed">
                 <MapPin className="h-4 w-4 text-primary shrink-0" />
-                <span>One ecosystem, serving global dreams.</span>
+                <span>No. 1/1278C, 1st Floor, 3rd Street, South Bethal Nagar, Injambakkam, Chennai – 600115, Tamil Nadu, India.</span>
               </div>
             </div>
           </div>

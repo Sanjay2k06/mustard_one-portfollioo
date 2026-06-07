@@ -22,9 +22,9 @@ const projects: Project[] = [
     category: "Portrait Art",
     desc: "Realistic hand drawn portraits crafted with precision, detail, and artistic excellence.",
     image: "/video_images/pencil.jpeg",
-    bgTheme: "#121212",
-    accentColor: "#F5B400",
-    secondaryAccent: "#FF8A00"
+    bgTheme: "#0F0F1A",
+    accentColor: "#6D3DF5",
+    secondaryAccent: "#A78BFA"
   },
   {
     id: "water",
@@ -32,9 +32,9 @@ const projects: Project[] = [
     category: "Watercolor Art",
     desc: "Vibrant watercolor artworks that transform memories and ideas into timeless creations.",
     image: "/video_images/water.jpeg",
-    bgTheme: "#161616",
-    accentColor: "#2563EB",
-    secondaryAccent: "#FF8A00"
+    bgTheme: "#121124",
+    accentColor: "#F472B6",
+    secondaryAccent: "#A78BFA"
   },
   {
     id: "thread",
@@ -42,9 +42,9 @@ const projects: Project[] = [
     category: "Embroidery Art",
     desc: "Unique handcrafted portraits created using threads for a distinctive artistic appearance.",
     image: "/video_images/threat.jpeg",
-    bgTheme: "#1E1E1E",
-    accentColor: "#FF8A00",
-    secondaryAccent: "#F5B400"
+    bgTheme: "#15132a",
+    accentColor: "#A78BFA",
+    secondaryAccent: "#F472B6"
   },
   {
     id: "brand",
@@ -52,9 +52,9 @@ const projects: Project[] = [
     category: "Brand & Identity",
     desc: "Logo design, poster design, social media creatives, business branding, and complete visual identity solutions.",
     image: "/video_images/brand.jpeg",
-    bgTheme: "#141414",
-    accentColor: "#F5B400",
-    secondaryAccent: "#2563EB"
+    bgTheme: "#0F0F1A",
+    accentColor: "#6D3DF5",
+    secondaryAccent: "#F472B6"
   },
   {
     id: "film",
@@ -62,9 +62,9 @@ const projects: Project[] = [
     category: "Film & Media",
     desc: "End-to-end production services including concept development, filming, direction, and storytelling.",
     image: "/video_images/video.jpeg",
-    bgTheme: "#1C1C1C",
-    accentColor: "#FF8A00",
-    secondaryAccent: "#F5B400"
+    bgTheme: "#131126",
+    accentColor: "#F472B6",
+    secondaryAccent: "#6D3DF5"
   },
   {
     id: "edit",
@@ -72,9 +72,9 @@ const projects: Project[] = [
     category: "Video Production",
     desc: "Professional editing for reels, advertisements, promotional videos, YouTube content, and cinematic projects.",
     image: "/video_images/edit.jpeg",
-    bgTheme: "#181818",
-    accentColor: "#2563EB",
-    secondaryAccent: "#F5F7FA"
+    bgTheme: "#111022",
+    accentColor: "#A78BFA",
+    secondaryAccent: "#FFFFFF"
   }
 ];
 
