@@ -260,8 +260,8 @@ export function DivisionPage({
             className="relative overflow-hidden rounded-3xl border border-primary/30 p-12 text-center"
             style={{ background: "linear-gradient(135deg, oklch(0.18 0.02 95), oklch(0.13 0.005 95))" }}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold">Ready to start?</h2>
-            <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#F7F4EE]">Ready to start?</h2>
+            <p className="mx-auto mt-3 max-w-xl text-[#F7F4EE]/70">
               Tell us what you're working on. We'll respond within 24 hours.
             </p>
             <Link

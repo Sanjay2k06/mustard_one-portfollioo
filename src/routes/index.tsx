@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
 const divisions = [
   {
     slug: "mustardworks",
-    name: "MustardWork",
+    name: "MustardWorks",
     tag: "Engineering & Innovation",
     desc: "Transforming ideas into practical engineering solutions.",
     icon: Cpu,
@@ -71,7 +71,7 @@ function Index() {
       <div className="py-12 my-8 bg-card border-y border-border/60 overflow-hidden">
         <ScrollVelocity
           texts={[
-            "MustardLearn • MustardStudio • MustardCare • MustardWork",
+            "MustardLearn • MustardStudio • MustardCare • MustardWorks",
             "Engineering • Creativity • Technology • Learning"
           ]}
           velocity={15}

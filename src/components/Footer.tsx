@@ -51,7 +51,7 @@ export function Footer() {
               Divisions
             </h4>
             <ul className="space-y-3 text-sm">
-              <FooterLink to="/services/mustardworks">MustardWork</FooterLink>
+              <FooterLink to="/services/mustardworks">MustardWorks</FooterLink>
               <FooterLink to="/services/mustardstudio">MustardStudio</FooterLink>
               <FooterLink to="/services/mustardcare">MustardCare</FooterLink>
               <FooterLink to="/services/mustardlearn">MustardLearn</FooterLink>

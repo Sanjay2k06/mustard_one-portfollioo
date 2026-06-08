@@ -4,15 +4,15 @@ import { DivisionPage } from "@/components/DivisionPage";
 export const Route = createFileRoute("/services/mustardworks")({
   head: () => ({
     meta: [
-      { title: "MustardWork — Engineering Meets Innovation" },
+      { title: "MustardWorks — Engineering Meets Innovation" },
       { name: "description", content: "Embedded systems, IoT, VLSI, generative AI, ML, EV technology, prototypes, and final-year projects." },
-      { property: "og:title", content: "MustardWork — Engineering Meets Innovation" },
+      { property: "og:title", content: "MustardWorks — Engineering Meets Innovation" },
       { property: "og:description", content: "Transforming ideas into practical engineering solutions." },
     ],
   }),
   component: () => (
     <DivisionPage
-      eyebrow="MustardWork"
+      eyebrow="MustardWorks"
       logo="/video_images/mustard_work.png"
       hideGallery={true}
       theme="work"
